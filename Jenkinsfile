@@ -2,6 +2,11 @@ pipeline {
     agent any
     
     stages {
+        stage('Refresh Pull request') {
+            steps {
+                bat 'node git_data_fetcher.mjs'
+            }
+        }
         stage('Install NodeModules') {
             steps {
                 bat 'npm install --legacy-peer-deps'
